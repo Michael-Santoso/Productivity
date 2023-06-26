@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    display:flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    background-color: rgb(248, 244, 209);
+    justify-content: flex-start;
+    align-items: center;
+    padding:10px;
+    transition: color 0.2s;
+}
+
+.navbar:hover{
+    background-color: rgb(248, 243, 108);
+}
+
+.logo{
+    width: 90px;
+    height: auto;
+}
+
+.links{
+    display:flex;
+    flex-direction: row;
+    margin-left: 100px;
+}
+
+.link{
+    color: rgb(135, 135, 142);
+    text-decoration: none;
+    margin-right: 20px;
+    font-family: 'Times New Roman';
+    transition: color 0.2s;
+}
+
+.link:hover {
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transform: scale(1.2);
+    font-size: 1000;
+}
