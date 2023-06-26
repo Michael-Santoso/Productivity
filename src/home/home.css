@@ -1,0 +1,52 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+}
+
+.study{
+    height: 300px;
+    width: auto;
+    margin-bottom: 50px;
+    animation: ease-in-out infinite;
+    animation-duration: 8s;
+    animation-timing-function: ease-in-out;
+    animation-name: morph;
+    border: 3px solid rgb(110,161,208);
+}
+
+@keyframes morph {
+    0% {
+        border-top-left-radius: 60%;
+        border-top-right-radius: 40% 30%;
+        border-bottom-right-radius: 30% 70%;
+        border-bottom-left-radius: 70% 40%;
+    }
+    50% {
+        border-top-left-radius: 30% 50%;
+        border-top-right-radius: 60%;
+        border-bottom-right-radius: 70% 30%;
+        border-bottom-left-radius: 40% 60%;
+    }
+    100% {
+        border-top-left-radius: 60%;
+        border-top-right-radius: 40% 30%;
+        border-bottom-right-radius: 30% 70%;
+        border-bottom-left-radius: 70% 40%;
+    }
+  }
+
+.title{
+    color: #000000;
+    font-size: 36px;
+    font-weight: 800;
+    font-family: 'Times New Roman';
+    
+}
+
+.body{
+    margin-top: 10px;
+    font-size: 24px;
+    font-family: 'Times New Roman';
+}

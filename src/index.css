@@ -11,20 +11,20 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding:10px;
-    transition: color 0.2s;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px px rgba(0, 0, 0, 0.2);
 }
 
 
 .logo{
     width: 90px;
     height: auto;
+    margin-right: 100px;
 }
 
 .links{
     display:flex;
     flex-direction: row;
-    margin-left: 100px;
+    
 }
 
 .link{
