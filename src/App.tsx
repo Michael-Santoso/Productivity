@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeMain />} />
           <Route path="/weather" element={<WeatherMain />} />
+          <Route path="*" element={<h1>PAGE NOT FOUND</h1>} />
         </Routes>
       </Router>
     </div>
