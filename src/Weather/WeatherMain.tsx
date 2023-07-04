@@ -80,6 +80,7 @@ function WeatherMain() {
           )}
           {temperature && (
             <div className="temperature">
+              <p className="condition-text">{`☀   ${temperature?.condition.text}`}</p>
               <p>{`Temperature: ${temperature?.temp_c} °C`}</p>
               <p>{`Wind: ${temperature?.wind_kph} kph`}</p>
               <p>{`Humidity: ${temperature?.humidity} %`}</p>
@@ -91,6 +92,9 @@ function WeatherMain() {
           </div>
           {error && <p>{error}</p>}
         </div>
+      </div>
+      <div className="accordion-container">
+        <div className="accordion"></div>
       </div>
     </div>
   );
