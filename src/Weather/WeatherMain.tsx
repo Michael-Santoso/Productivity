@@ -9,8 +9,17 @@ function WeatherMain() {
   const [temperature, setTemperature] = useState<any>();
   const [icon, setIcon] = useState();
   const [error, setError] = useState("");
+  const [forecast, setForecast] = useState<any[]>();
   //add wind kph, humidity %, pressure mb
   // API key = 040e5b45f5df423a94025839232706
+
+  const [selected, setSelected] = useState<any>(null);
+  const toggle = (i: number) => {
+    if (selected == i) {
+      return setSelected(null);
+    }
+    setSelected(i);
+  };
 
   const cityInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -19,6 +28,7 @@ function WeatherMain() {
       setLocation(undefined);
       setTemperature(undefined);
       setIcon(undefined);
+      setForecast(undefined);
     }
   };
 
@@ -31,12 +41,13 @@ function WeatherMain() {
   const callWeatherAPI = (cityInput: string) => {
     axios
       .get(
-        `http://api.weatherapi.com/v1/current.json?key=040e5b45f5df423a94025839232706&q=${cityInput}&aqi=no`
+        `http://api.weatherapi.com/v1/forecast.json?key=040e5b45f5df423a94025839232706&q=${cityInput}&days=7&aqi=no&alerts=no`
       )
       .then((resp) => {
         setLocation(resp.data.location);
         setTemperature(resp.data.current);
         setIcon(resp.data.current.condition.icon);
+        setForecast(resp.data.forecast.forecastday);
         setError("");
         console.log("API was called");
         console.log(location);
@@ -94,7 +105,33 @@ function WeatherMain() {
         </div>
       </div>
       <div className="accordion-container">
-        <div className="accordion"></div>
+        {forecast && <p>Daily Forecast</p>}
+        <div className="accordion">
+          {forecast &&
+            forecast.map((day, i) => (
+              <div>
+                <div onClick={() => toggle(i)}>
+                  <div className="daysforecasted">
+                    <img src={day.day.condition.icon}></img>
+                    <p>
+                      {new Date(day.date).toLocaleDateString("en-US", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </p>
+                    <p>{`${day.day.condition.text}`}</p>
+                    <p>{`${day.day.avgtemp_c} °C`}</p>
+                  </div>
+                </div>
+                <div className={selected == i ? "content.show" : "content"}>
+                  <div>
+                    <p>{`Average Humidity: ${day.day.avghumidity}`}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
