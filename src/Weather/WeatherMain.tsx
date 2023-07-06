@@ -29,6 +29,7 @@ function WeatherMain() {
       setTemperature(undefined);
       setIcon(undefined);
       setForecast(undefined);
+      setError("");
     }
   };
 
@@ -66,7 +67,7 @@ function WeatherMain() {
             value={city}
             onKeyUp={handleKeyPress}
             onChange={cityInput}
-            placeholder="Search for city"
+            placeholder="Search for city weather"
             className="search-instruction input-field"
           />
           <button
@@ -101,32 +102,41 @@ function WeatherMain() {
           <div className="icon-container">
             <img src={icon} className="icon"></img>
           </div>
-          {error && <p>{error}</p>}
+          {error && <h2>{error}</h2>}
         </div>
       </div>
       <div className="accordion-container">
-        {forecast && <p>Daily Forecast</p>}
+        {forecast && <p className="dailyforecasttitle">Daily Forecast</p>}
         <div className="accordion">
           {forecast &&
             forecast.map((day, i) => (
               <div>
-                <div onClick={() => toggle(i)}>
+                <div className="title" onClick={() => toggle(i)}>
                   <div className="daysforecasted">
-                    <img src={day.day.condition.icon}></img>
-                    <p>
+                    <img className="icon2" src={day.day.condition.icon}></img>
+                    <p className="daily-text">
                       {new Date(day.date).toLocaleDateString("en-US", {
+                        weekday: "long",
                         day: "numeric",
                         month: "long",
                         year: "numeric",
                       })}
                     </p>
-                    <p>{`${day.day.condition.text}`}</p>
-                    <p>{`${day.day.avgtemp_c} °C`}</p>
+                    <p className="daily-text">{`${day.day.condition.text}`}</p>
+                    <p className="daily-text">{`${day.day.avgtemp_c} °C`}</p>
                   </div>
                 </div>
                 <div className={selected == i ? "content.show" : "content"}>
                   <div>
-                    <p>{`Average Humidity: ${day.day.avghumidity}`}</p>
+                    {day.hour
+                      .filter((_hour: any, i: any) => i % 3 === 0)
+                      .map((hour: any, i: any) => (
+                        <div className="hourforecasted" key={i}>
+                          <p>{`${hour.time.substring(11, 16)}`}</p>
+                          <p>{`${hour.condition.text}`}</p>
+                          <p>{`${hour.temp_c}°C / ${hour.wind_kph}kph`}</p>
+                        </div>
+                      ))}
                   </div>
                 </div>
               </div>
