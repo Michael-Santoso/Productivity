@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 7em;
 }
 
 .weather-search{
@@ -59,14 +60,94 @@
     scale: 70%;
 }
 
+.searchbar-container{
+    padding-top: 1em;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 20em;
+}
+
+.input-wrapper{
+    background-color: white;
+    width: 100%;
+    border-radius: 1em;
+    height: 2.5em;
+    padding: 0.1em 1em;
+    border:1px solid rgb(0,0,0);
+    box-shadow: 0px 0px 3px #ddd;
+    display: flex;
+    align-items: center;
+}
+
+input{
+    background-color: transparent;
+    border:none;
+    height: 100%;
+    font-size: 1em;
+    width:100%;
+    margin-left: 0.2em;
+}
+
+input:focus{
+    outline: none;
+}
+
+#search-icon{
+    color:rgb(10, 64, 226);
+}
+
+.results-list{
+    width:100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 4px #ddd;
+    border-radius: 0.5em;
+    max-height: 10em;
+    overflow-y: scroll;
+}
+
+.search-result{
+    padding: 1em 0.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+}
+.search-result:hover{
+    background-color: #efefef;
+}
+
 .wrapper-weather-card{
     display: flex;
     width: 50vw;
     height: auto;
     justify-content: center;
     align-items: center;
-    
+
 }
+
+@media (max-width: 768px) {
+    .wrapper-weather-card{
+        display: flex;
+        width: 40vw;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+    
+    }
+
+    .weather-card{
+        display:grid;
+        grid-template-columns: 10em 5em 7.5em;
+        grid-template-rows: 5em 9em;
+        background-color: rgb(247, 247, 247);
+        box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+    }
+}
+
 
 .weather-card{
     display:grid;
@@ -107,7 +188,7 @@
 
 .condition-text{
     font-weight: 700;
-    margin-left: 0.5em;
+    
 }
 
 .temperature{
@@ -149,7 +230,7 @@
 }
 
 .accordion{
-    width: 60vw;
+    width: auto;
     justify-content: center;
     align-items: center;
     
@@ -162,7 +243,7 @@
 }
 
 .title{
-
+    display:flex
 }
 
 .daily-text{
@@ -186,8 +267,9 @@
     border-radius: 0.4em;
     margin: 0.2em;
     padding: 0.2em;
+    padding-right: 0.3em;
     background-color: rgb(247, 247, 247);
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.18);
     cursor: pointer;
     height: auto;
 }
@@ -198,6 +280,7 @@
     z-index: 1;
     max-height:9999;
     transition: all 0.5s cubic-bezier(0,1,0,1);
+   
 }
 
 .content{
